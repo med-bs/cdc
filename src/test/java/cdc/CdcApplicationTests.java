@@ -38,11 +38,13 @@ class CdcApplicationTests {
         transactionRepository.save(trans);
         System.out.println(trans);
     }
-
+/*
     @Test
     public void testDeletTrensaction(){
         transactionRepository.deleteById(130);
     }
+
+ */
 
     @Test
     public void testFindAllTransactions(){

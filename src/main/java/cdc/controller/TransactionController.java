@@ -31,7 +31,7 @@ public class TransactionController {
         return transactionServiceImpl.updateTransaction(transaction);
     }
 
-    @PutMapping ("/add")
+    @PostMapping ("/add")
     public Transaction addTransaction(@RequestBody Transaction transaction){
         return transactionServiceImpl.saveTransaction(transaction);
     }
