@@ -16,7 +16,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
     private TransactionRepository transactionRepository;
-    private final int size=10;
+    private final int defaultPageSize=10;
     @Override
     public Transaction saveTransaction(Transaction transaction) {
         return transactionRepository.save(transaction);
@@ -28,7 +28,8 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction updateTransaction(Transaction transaction) {
+    public Transaction updateTransaction(Transaction transaction, int id) {
+        transaction.setId(id);
         return transactionRepository.save(transaction);
     }
 
@@ -53,8 +54,8 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Page<Transaction> getSomeTransactions(int numPage) {
-        Pageable pageable = PageRequest.of(numPage, size);
+    public Page<Transaction> getSomeTransactions(int numPage, int pageSize) {
+        Pageable pageable = PageRequest.of(numPage, pageSize);
         return transactionRepository.findAll(pageable);
     }
 }

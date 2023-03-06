@@ -14,7 +14,8 @@ import java.util.List;
 public class TransactionController {
 
     @Autowired
-    TransactionServiceImpl transactionServiceImpl;
+    private TransactionServiceImpl transactionServiceImpl;
+    private final int pageSize=10;
 
     @GetMapping("/transaction/{id}")
     public Transaction getTransaction(@PathVariable int id){
@@ -27,15 +28,15 @@ public class TransactionController {
         return transactionServiceImpl.getAllTransactions();
     }
 
-    @GetMapping("/transactions/{page}")
-    public List<Transaction> getSomeTransaction(@PathVariable int page){
-        return transactionServiceImpl.getSomeTransactions(page).toList();
+    @GetMapping("/transactions/{numPage}")
+    public List<Transaction> getSomeTransaction(@PathVariable int numPage){
+        return transactionServiceImpl.getSomeTransactions(numPage,pageSize).toList();
     }
 
 
-    @PutMapping("/transaction")
-    public Transaction updateTransaction(@RequestBody Transaction transaction){
-        return transactionServiceImpl.updateTransaction(transaction);
+    @PutMapping("/transaction/{id}")
+    public Transaction updateTransaction(@RequestBody Transaction transaction, @PathVariable int id){
+        return transactionServiceImpl.updateTransaction(transaction,id);
     }
 
     @PostMapping ("/transaction")

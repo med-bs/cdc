@@ -24,14 +24,14 @@ class CdcApplicationTests {
     }
     @Test
     public void testCreatTransaction(){
-        Transaction trans=new Transaction(100,"orig",120,130,"dest",200,220);
+        Transaction trans=new Transaction(null,100,"orig",120,130,"dest",200,220);
         tt.saveTransaction(trans);
     }
 
     @Test
     public void testCreatBatchTransaction(){
-        Transaction trans=new Transaction(169,"2orig",1020,130,"dest",200,220);
-        Transaction trans2=new Transaction(69,"1orig",1020,130,"dest",200,220);
+        Transaction trans=new Transaction(null,169,"2orig",1020,130,"dest",200,220);
+        Transaction trans2=new Transaction(null,69,"1orig",1020,130,"dest",200,220);
 
         ArrayList<Transaction> listTrans = new ArrayList();
         listTrans.add(trans);
@@ -71,7 +71,7 @@ class CdcApplicationTests {
 
     @Test
     public void testGetSomeTransactions(){
-        Page<Transaction> page = tt.getSomeTransactions(0);
+        Page<Transaction> page = tt.getSomeTransactions(0,5);
         System.out.println("-----------\n\n"+page.toList().size()+"\n\n------------------");
     }
 }

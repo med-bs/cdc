@@ -21,7 +21,8 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction( double amount, String nameOrig, double oldbalanceOrig, double newbalanceOrig, String nameDest, double oldbalanceDest, double newbalanceDest) {
+    public Transaction(Integer id, double amount, String nameOrig, double oldbalanceOrig, double newbalanceOrig, String nameDest, double oldbalanceDest, double newbalanceDest) {
+        this.id=id;
         this.amount = amount;
         this.nameOrig = nameOrig;
         this.oldbalanceOrig = oldbalanceOrig;
