@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Transaction Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="container my-2">
+    <h1>Transactions List</h1>
+
+    <a th:href="@{'/list/1'}" class="btn btn-primary btn-sm mb-3"> Add Transaction </a>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th> id </th>
+            <th> amount </th>
+            <th> nameOrig </th>
+            <th> oldbalanceOrig </th>
+            <th> newbalanceOrig </th>
+            <th> nameDest </th>
+            <th> oldbalanceDest </th>
+            <th> newbalanceDest </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="transaction : ${listTransaction}">
+            <td th:text="${transaction.getId()}"></td>
+            <td th:text="${transaction.getAmount()}"></td>
+            <td th:text="${transaction.getOldbalanceOrig()}"></td>
+            <td th:text="${transaction.getNewbalanceOrig()}"></td>
+            <td th:text="${transaction.getNameDest()}"></td>
+            <td th:text="${transaction.getOldbalanceDest()}"></td>
+            <td th:text="${transaction.getNewbalanceDest()}"></td>
+            <td> <a th:href="@{'/list/1'}" class="btn btn-primary">Update</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${totalPages > 1}">
+        <div class="row col-sm-10">
+            <div class="col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class="col-sm-1">
+                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+      <a th:if="${currentPage != i}" th:href="@{'/list/' + ${i}}">[[${i}]]</a>
+      <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+            </div>
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/list/' + ${currentPage + 1}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/list/' + ${totalPages}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
