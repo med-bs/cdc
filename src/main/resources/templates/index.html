@@ -38,7 +38,7 @@
             <td th:text="${transaction.getNameDest()}"></td>
             <td th:text="${transaction.getOldbalanceDest()}"></td>
             <td th:text="${transaction.getNewbalanceDest()}"></td>
-            <td> <a th:href="@{'/list/1'}" class="btn btn-primary">Update</a></td>
+            <td> <a th:href="@{/updatetransaction/{id}(id=${transaction.getId()})}" class="btn btn-primary">Update</a></td>
         </tr>
         </tbody>
     </table>
