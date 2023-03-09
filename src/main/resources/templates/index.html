@@ -27,12 +27,14 @@
             <th> nameDest </th>
             <th> oldbalanceDest </th>
             <th> newbalanceDest </th>
+            <th>  </th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="transaction : ${listTransaction}">
             <td th:text="${transaction.getId()}"></td>
             <td th:text="${transaction.getAmount()}"></td>
+            <td th:text="${transaction.getNameOrig()}"></td>
             <td th:text="${transaction.getOldbalanceOrig()}"></td>
             <td th:text="${transaction.getNewbalanceOrig()}"></td>
             <td th:text="${transaction.getNameDest()}"></td>
